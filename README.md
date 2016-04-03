@@ -1,5 +1,5 @@
 # ry-conky
-Rylan Shearn's conky theme. This is a modification of the Seamod theme, enabling CPU temp and usage information for eight cores to be displayed, and Torque user job submission information for users of the LBBE/PRABI computer cluster. This works best with a white/light colour desktop wallpaper, but you can modify the colours to suit.
+Rylan Shearn's conky theme. This is a modification of the orange theme, enabling CPU temp and usage information for eight cores to be displayed, and Torque user job submission information for users of the LBBE/PRABI computer cluster. This works best with a white/light colour desktop wallpaper, but you can modify the colours to suit.
 
 ![screenshot](http://s15.postimg.org/f81xrofgb/Screenshot_from_2016_04_02_12_00_22.png)
 
