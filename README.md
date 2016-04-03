@@ -9,8 +9,7 @@ Rylan Shearn's conky theme. This is a modification of the orange theme, enabling
 - conky installed; As of 2016.04.02, this is not functioning with the latest conky release (v1.10.0) as this seems to be full of bugs. Use conky v1.9.0 while developers sort things out (installation instructions below).
 
 ## Installation instructions
-### Linux
-Ubuntu 
+### Ubuntu Linux
 open a terminal with `ctrl+alt+t` and enter the following, making sure to replace `<clusterusername>` with your actual cluster username (if you are actually with LBBE/PRABI) and replace `<unixuser-id>` with your actual unix user-id:
 
 ```sh
