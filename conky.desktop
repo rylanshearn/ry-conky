@@ -1,0 +1,8 @@
+[Desktop Entdefault]
+Type=Application
+Exec=/home/default/.conky/conky_start.sh
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name=conkystartup
+Comment=runs conky at startup
