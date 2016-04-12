@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Ry-conky by rylanshearn</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Ry-conky</h1>
+      <h2 class="project-tagline">Rylan&#39;s conky theme</h2>
+      <a href="https://github.com/rylanshearn/ry-conky" class="btn">View on GitHub</a>
+      <a href="https://github.com/rylanshearn/ry-conky/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/rylanshearn/ry-conky/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="ry-conky" class="anchor" href="#ry-conky" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>ry-conky</h1>
+
+<p>Rylan Shearn's conky theme. This is a modification of the orange theme, enabling CPU temp and usage information for eight cores to be displayed, and Torque user job submission information for users of the LBBE/PRABI computer cluster. This works best with a white/light colour desktop wallpaper, but you can modify the colours to suit.</p>
+
+<p><img src="http://s15.postimg.org/f81xrofgb/Screenshot_from_2016_04_02_12_00_22.png" alt="screenshot"></p>
+
+<h2>
+<a id="requirements" class="anchor" href="#requirements" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Requirements</h2>
+
+<ul>
+<li>A PC with eight CPU cores (you will get errors if you have less than eight CPU cores)</li>
+<li>a linux distribution</li>
+<li>conky installed; As of 2016.04.02, this is not functioning with the latest conky release (v1.10.0) as this seems to be full of bugs. Use conky v1.9.0 while developers sort things out (installation instructions below).</li>
+</ul>
+
+<h2>
+<a id="installation-instructions" class="anchor" href="#installation-instructions" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installation instructions</h2>
+
+<h3>
+<a id="ubuntu-linux" class="anchor" href="#ubuntu-linux" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Ubuntu Linux</h3>
+
+<p>open a terminal with <code>ctrl+alt+t</code> and enter the following, making sure to replace <code>&lt;clusterusername&gt;</code> with your actual cluster username (if you are actually with LBBE/PRABI) and replace <code>&lt;unixuser-id&gt;</code> with your actual unix user-id:</p>
+
+<div class="highlight highlight-source-shell"><pre>sudo apt-get install curl lm-sensors hddtemp <span class="pl-c">#install system monitoring tools</span>
+<span class="pl-c1">cd</span> <span class="pl-k">~</span>/Downloads <span class="pl-c">#change to downloads directory</span>
+wget http://security.ubuntu.com/ubuntu/pool/universe/c/conky/conky-std_1.9.0-4_amd64.deb <span class="pl-c">#download conky</span>
+sudo apt-get install gdebi-core <span class="pl-c">#enables installation of dependencies</span>
+sudo gdebi conky-std_1.9.0-4_amd64.deb <span class="pl-c">#install conky with dependencies</span>
+sudo apt-mark hold conky-std <span class="pl-c">#prevent updates to conky</span>
+sudo apt-get install git <span class="pl-c">#install git if you do not have it</span>
+git clone https://github.com/rylanshearn/ry-conky <span class="pl-c">#clone this project</span>
+<span class="pl-c1">cd</span> ry-conky <span class="pl-c">#move to project directory</span>
+mkdir <span class="pl-k">~</span>/.conky <span class="pl-c">#make directory for your conky files</span>
+cp <span class="pl-k">*</span> <span class="pl-k">~</span>/.conky <span class="pl-c">#copy project files to conky directory</span>
+<span class="pl-c1">cd</span> <span class="pl-k">~</span>/.conky <span class="pl-c">#move to conky directory</span>
+sed -i -e <span class="pl-s"><span class="pl-pds">'</span>s/shearn/&lt;clusterusername&gt;/g<span class="pl-pds">'</span></span> feedsrc_ry <span class="pl-c">#replace my name with your cluster username</span>
+./conky_start.sh <span class="pl-c">#test conky configuration - you should see it after a few minutes</span>
+sed -i -e <span class="pl-s"><span class="pl-pds">'</span>s/default/&lt;unixuser-id&gt;/g<span class="pl-pds">'</span></span> conky.desktop <span class="pl-c">#replace default with your unix user-id</span>
+mkdir <span class="pl-k">~</span>/.config/autostart <span class="pl-c">#make autostart dir if not there already</span>
+cp conky.desktop <span class="pl-k">~</span>/.config/autostart/ <span class="pl-c">#set to run script at startup</span></pre></div>
+
+<h3>
+<a id="other-operating-systems" class="anchor" href="#other-operating-systems" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Other operating systems</h3>
+
+<p>Conky is supported on other linux operating systems, for more info check the <a href="http://conky.sourceforge.net/documentation.html">website</a>.</p>
+
+<h2>
+<a id="acknowledgements" class="anchor" href="#acknowledgements" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Acknowledgements</h2>
+
+<p>This template is based around the <a href="http://seajey.deviantart.com/art/Conky-Seamod-v0-1-283461046">seamod</a>, <a href="http://gnome-look.org/content/show.php?content=137503&amp;forumpage=0">orange</a> and <a href="http://gnome-look.org/content/show.php?content=142884">lunatico</a> themes.</p>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/rylanshearn/ry-conky">Ry-conky</a> is maintained by <a href="https://github.com/rylanshearn">rylanshearn</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
